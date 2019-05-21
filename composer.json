@@ -1,0 +1,29 @@
+{
+    "name": "klepak/enterprise-driver-management",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Knut Leborg",
+            "email": "knut@lepa.no"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "5.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klepak\\DriverManagement\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Klepak\\DriverManagement\\DriverManagementServiceProvider"
+            ]
+        }
+    }
+}
