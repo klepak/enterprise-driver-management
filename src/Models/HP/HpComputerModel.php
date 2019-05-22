@@ -6,6 +6,7 @@ use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogControl
 
 use Log;
 use Klepak\DriverManagement\Models\VendorComputerModel;
+use Exception;
 
 class HpComputerModel extends VendorComputerModel
 {
@@ -34,29 +35,31 @@ class HpComputerModel extends VendorComputerModel
         ];
     }
 
-    public function driverPacks($operatingSystem, $osBuild = 1709)
+    public function driverPack($operatingSystem, $osBuild = null)
     {
         $osNameStr = "{$operatingSystem} 64-bit";
 
         if($osBuild !== null)
             $osNameStr .= ", {$osBuild}";
+        else
+            $osNameStr .= "%";
 
-        $allDriverPacks = HpDriverPack::where("system_id", $this->system_id)->where("os_name", "like", $osNameStr)->get();
+        $allDriverPacks = HpDriverPack::where(function($sub) {
+            foreach($this->system_id as $systemId)
+            {
+                $sub->orWhere("system_id", 'like', "%\"{$systemId}\"%");
+            }
+        })
+            ->where("os_name", "like", $osNameStr)
+            ->get()
+            ->unique('os_name');
 
-        $pnpSoftpaqs = [];
-        foreach($allDriverPacks as $driverPack)
-        {
-            if(!in_array($driverPack->softpaq_id, $pnpSoftpaqs))
-                $pnpSoftpaqs[] = $driverPack->softpaq_id;
-        }
+        if($osBuild == null && $allDriverPacks->count() > 0)
+            throw new Exception("Found multiple driver packs for same build");
 
-        $driverPacks = [];
-        foreach($pnpSoftpaqs as $pnpSoftpaq)
-        {
-            $driverPacks[] = HpSoftpaq::find(str_replace("sp", "", $pnpSoftpaq));
-        }
+        $driverPack = $allDriverPacks->sortByDesc('os_name')->first();
 
-        return $driverPacks;
+        return HpSoftpaq::find(str_replace("sp", "", $driverPack->softpaq_id));
     }
 
     // TODO: pick latest os build
