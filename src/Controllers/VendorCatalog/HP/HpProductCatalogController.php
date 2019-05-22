@@ -87,7 +87,7 @@ class HpProductCatalogController extends HpCatalogBaseController
                 [
                     "name" => $name,
                     "short_name" => (string)$productModel->ShortName,
-                    "system_id" => explode(",", (string)$productModel->SystemID),
+                    "system_id" => explode(",", trim((string)$productModel->SystemID)),
                     "dpb_compliant" => (string)$productModel->DPBCompliant,
                     "supported_os_ids" => explode(", ", (string)$productModel->SupportedOSID),
                 ]
@@ -152,7 +152,6 @@ class HpProductCatalogController extends HpCatalogBaseController
             $softpaqId = $attributes["Id"];
 
             $progress
-                ->message("Processing softpaqs (sp$softpaqId)")
                 ->update(++$i);
 
             HpSoftpaq::updateOrCreate(
