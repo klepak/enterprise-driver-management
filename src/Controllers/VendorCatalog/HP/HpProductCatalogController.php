@@ -9,6 +9,7 @@ use Klepak\DriverManagement\Models\HP\HpSoftpaq;
 use Klepak\DriverManagement\Models\HP\HpHardware;
 
 use Log;
+use ConsoleProgressBar;
 
 /**
  * @resource HpProductCatalog
@@ -139,15 +140,20 @@ class HpProductCatalogController extends HpCatalogBaseController
         Log::info("Process softpaqs from model catalog");
 
         $softpaqs = $this->getLocalCatalog()->xpath("//Softpaq");
-        $count = count($softpaqs);
-        $i = 0;
 
+        $progress = (new ConsoleProgressBar)
+            ->max(count($softpaqs))
+            ->message('Processing softpaqs');
+
+        $i = 0;
         foreach($softpaqs as $softpaq)
         {
             $attributes = ((array)$softpaq->attributes())["@attributes"];
             $softpaqId = $attributes["Id"];
 
-            consoleProgressBar(++$i, $count, "Processing softpaqs (sp$softpaqId)");
+            $progress
+                ->message("Processing softpaqs (sp$softpaqId)")
+                ->update(++$i);
 
             HpSoftpaq::updateOrCreate(
                 ["id" => $softpaqId],
@@ -174,6 +180,8 @@ class HpProductCatalogController extends HpCatalogBaseController
                 ]
             );
         }
+
+        $progress->completed();
     }
 
     public function processHardware()
@@ -181,14 +189,18 @@ class HpProductCatalogController extends HpCatalogBaseController
         Log::info("Process hardware from model catalog");
 
         $hardwares = $this->getLocalCatalog()->xpath("//HW");
-        $count = count($hardwares);
-        $i = 0;
 
+        $progress = (new ConsoleProgressBar)
+            ->max(count($hardwares))
+            ->message('Processing hardware');
+
+
+        $i = 0;
         foreach($hardwares as $hardware)
         {
             $hwId = (string)$hardware->HWID;
 
-            consoleProgressBar(++$i, $count, 'Processing hardware');
+            $progress->update(++$i);
 
             HpHardware::updateOrCreate(
                 [

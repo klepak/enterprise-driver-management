@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
 
 use Log;
+use ConsoleProgressBar;
 
 /**
  * @resource VendorCatalog
@@ -48,6 +49,10 @@ class VendorCatalogBaseController
 
         $filePath = $storagePath."/".basename($url);
 
+        $progressBar = (new ConsoleProgressBar)
+            ->message('Downloading')
+            ->padding(1);
+
         $client = new Client(); //GuzzleHttp\Client
         try
         {
@@ -55,13 +60,16 @@ class VendorCatalogBaseController
 
             $result = $client->request("GET", $url, [
                 "sink" => $filePath,
-                'progress' => function ($dl_total_size, $dl_size_so_far, $ul_total_size, $ul_size_so_far) use (&$lastProgress) {
+                'progress' => function ($dl_total_size, $dl_size_so_far, $ul_total_size, $ul_size_so_far) use (&$lastProgress, $progressBar) {
                     if($dl_total_size == 0)
                         $progress = 0;
                     else
                         $progress = floor($dl_size_so_far/$dl_total_size*100);
 
-                    consoleProgressBar($dl_size_so_far, $dl_total_size, 'Downloading', 'K');
+                    $progressBar
+                        ->max($dl_total_size)
+                        ->unit('K')
+                        ->update($dl_size_so_far);
 
                     if($lastProgress != $progress)
                     {
@@ -74,6 +82,8 @@ class VendorCatalogBaseController
                     }
                 }
             ]);
+
+            $progressBar->completed();
 
             Log::info("Download success", ["filePath" => $filePath]);
 

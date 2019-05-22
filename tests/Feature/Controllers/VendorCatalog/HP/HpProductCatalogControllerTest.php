@@ -5,6 +5,10 @@ namespace Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\HP;
 use Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\VendorCatalogBaseControllerTest;
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
 use Klepak\DriverManagement\Models\HP\HpHardware;
+use Klepak\DriverManagement\Models\HP\HpSoftpaq;
+use Klepak\DriverManagement\Models\HP\HpLanguage;
+use Klepak\DriverManagement\Models\HP\HpOperatingSystem;
+use Klepak\DriverManagement\Models\HP\HpComputerModel;
 
 class HpProductCatalogControllerTest extends VendorCatalogBaseControllerTest
 {
@@ -17,5 +21,9 @@ class HpProductCatalogControllerTest extends VendorCatalogBaseControllerTest
         $catalog->processCatalog();
 
         $this->assertTrue(HpHardware::count() > 0, 'No hardware in DB');
+        $this->assertTrue(HpSoftpaq::count() > 0, 'No hardware in DB');
+        $this->assertTrue(HpLanguage::count() > 0, 'No hardware in DB');
+        $this->assertTrue(HpOperatingSystem::count() > 0, 'No hardware in DB');
+        $this->assertTrue(HpComputerModel::count() > 0, 'No hardware in DB');
     }
 }
