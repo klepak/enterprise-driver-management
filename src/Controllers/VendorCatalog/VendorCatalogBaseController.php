@@ -50,8 +50,9 @@ class VendorCatalogBaseController
         $filePath = $storagePath."/".basename($url);
 
         $progressBar = (new ConsoleProgressBar)
-            ->message('Downloading')
-            ->padding(1);
+            ->message('Downloading ' . basename($url))
+            ->padding(1, 0)
+            ->update(0);
 
         $client = new Client(); //GuzzleHttp\Client
         try
@@ -67,6 +68,7 @@ class VendorCatalogBaseController
                         $progress = floor($dl_size_so_far/$dl_total_size*100);
 
                     $progressBar
+                        ->padding(0, 1)
                         ->max($dl_total_size)
                         ->unit('K')
                         ->update($dl_size_so_far);
@@ -137,16 +139,18 @@ class VendorCatalogBaseController
             if($catalogPath !== false)
             {
                 $extractedPath = $instance->extractCatalog($catalogPath);
-                if($extractedPath !== false)
-                {
-                    $instance->processCatalog();
-                }
+
+                return $extractedPath !== false;
             }
+
+            return false;
         }
         else
         {
             Log::info("No update available");
         }
+
+        return true;
     }
 
     public function processCatalog()
