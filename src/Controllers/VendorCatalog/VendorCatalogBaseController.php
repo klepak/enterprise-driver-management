@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Controllers;
+namespace Klepak\DriverManagement\Controllers\VendorCatalog;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;

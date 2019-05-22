@@ -1,8 +1,8 @@
 <?php
 
-namespace Klepak\DriverManagement\Controllers\HP;
+namespace Klepak\DriverManagement\Controllers\VendorCatalog\HP;
 
-use Klepak\DriverManagement\Controllers\VendorCatalogBaseController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\VendorCatalogBaseController;
 
 use Log;
 

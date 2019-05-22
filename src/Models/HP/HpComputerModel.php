@@ -2,7 +2,7 @@
 
 namespace Klepak\DriverManagement\Models\HP;
 
-use Klepak\DriverManagement\Controllers\HP\HpProductCatalogController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
 
 use Log;
 use Klepak\DriverManagement\Models\VendorComputerModel;

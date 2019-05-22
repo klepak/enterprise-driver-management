@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Controllers\HP;
+namespace Klepak\DriverManagement\Controllers\VendorCatalog\HP;
 
 use Log;
 use Klepak\DriverManagement\Models\HP\HpDriverPack;
