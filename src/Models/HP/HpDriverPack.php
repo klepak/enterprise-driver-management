@@ -12,4 +12,8 @@ class HpDriverPack extends Model
 
     protected $primaryKey = "id";
     public $incrementing = false;
+
+    protected $casts = [
+        "system_id" => "array",
+    ];
 }
