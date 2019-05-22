@@ -6,7 +6,7 @@ Automatically generate and maintain driver sets for computer models from HP. Del
 
 ### Install package
 ```
-composer install
+composer require klepak/enterprise-driver-management
 ```
 
 ### Publish config
