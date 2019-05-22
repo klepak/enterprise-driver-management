@@ -27,6 +27,10 @@ class DriverManagementServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
+        $this->publishes([
+            __DIR__.'/../config/drvmgmt.php' => config_path('drvmgmt.php'),
+        ]);
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 HpCatalogProcessCommand::class,
