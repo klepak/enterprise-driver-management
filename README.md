@@ -1,5 +1,7 @@
 # Enterprise Driver Management
 
+Automatically generate and maintain driver sets for computer models from HP. Dell, Lenovo and Microsoft coming soon.
+
 ## Getting started
 
 ### Install package
