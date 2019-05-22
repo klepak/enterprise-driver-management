@@ -4,7 +4,8 @@ class ConsoleProgressBar
     private $currentStep = 0;
     private $totalSteps = 0;
 
-    private $padding = 0;
+    private $paddingTop = 0;
+    private $paddingBottom = 0;
     private $message = '';
     private $unit = '';
 
@@ -31,9 +32,10 @@ class ConsoleProgressBar
         return $this;
     }
 
-    public function padding(int $padding)
+    public function padding(int $paddingTop, int $paddingBottom = null)
     {
-        $this->padding = $padding;
+        $this->paddingTop = $paddingTop;
+        $this->paddingBottom = $paddingBottom ?? $paddingTop;
 
         return $this;
     }
@@ -44,13 +46,15 @@ class ConsoleProgressBar
 
         if($this->firstWrite)
         {
-            for($i=0;$i<$this->padding;$i++)
+            for($i=0;$i<$this->paddingTop;$i++)
                 $this->write("\n");
 
             $this->firstWrite = false;
         }
 
         $this->write();
+
+        return $this;
     }
 
     public function completed()
@@ -58,7 +62,7 @@ class ConsoleProgressBar
         $this->currentStep = $this->totalSteps;
 
         $paddingLines = "";
-        for($i=0;$i<$this->padding;$i++)
+        for($i=0;$i<$this->paddingBottom;$i++)
             $paddingLines .= "\n";
 
         if($this->write() !== false)
