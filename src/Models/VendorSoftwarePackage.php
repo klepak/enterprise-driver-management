@@ -7,6 +7,8 @@ use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Exception;
 use Log;
+use GuzzleHttp\TransferStats;
+use GuzzleHttp\Cookie\CookieJar;
 
 class VendorSoftwarePackage extends Model
 {
@@ -47,20 +49,20 @@ class VendorSoftwarePackage extends Model
     {
         if($this->getHashProperty() === false)
         {
-            $this->log()->warning("Hash checking disabled");
+            Log::warning("Hash checking disabled");
             return true;
         }
         else
         {
             if(strtolower($hash) == strtolower($this->getHashProperty()))
             {
-                $this->log()->info("Hash verified");
+                Log::info("Hash verified");
 
                 return true;
             }
             else
             {
-                $this->log()->warning("Hash check failed");
+                Log::warning("Hash check failed");
             }
         }
     }
@@ -91,7 +93,6 @@ class VendorSoftwarePackage extends Model
         $client = new Client(); //GuzzleHttp\Client
         try
         {
-
             $result = $client->request("GET", $url, [
                 "sink" => $outFile,
                 "curl" => [
