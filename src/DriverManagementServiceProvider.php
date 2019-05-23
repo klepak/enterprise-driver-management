@@ -3,8 +3,8 @@
 namespace Klepak\DriverManagement;
 
 use Illuminate\Support\ServiceProvider;
-use Klepak\DriverManagement\Console\Commands\VendorCatalog\HP\HpCatalogProcessCommand;
-use Klepak\DriverManagement\Console\Commands\VendorCatalog\HP\HpCatalogUpdateCommand;
+use Klepak\DriverManagement\Console\Commands\VendorCatalog\CatalogProcessCommand;
+use Klepak\DriverManagement\Console\Commands\VendorCatalog\CatalogUpdateCommand;
 
 class DriverManagementServiceProvider extends ServiceProvider
 {
@@ -33,8 +33,8 @@ class DriverManagementServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                HpCatalogProcessCommand::class,
-                HpCatalogUpdateCommand::class,
+                CatalogProcessCommand::class,
+                CatalogUpdateCommand::class,
             ]);
         }
     }

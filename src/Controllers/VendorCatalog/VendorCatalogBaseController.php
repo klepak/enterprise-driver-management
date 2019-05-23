@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
 
 use Log;
+use Exception;
 use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
@@ -113,7 +114,7 @@ class VendorCatalogBaseController
 
         if(!file_exists($localCatalogXmlPath))
         {
-            return false;
+            throw new Exception('No local catalog found');
         }
         else
         {
