@@ -21,59 +21,69 @@ php artisan migrate
 
 ## Usage
 
-### HP
+### Downloading catalog
 
-#### Downloading catalog
-
-##### Console
+#### Console
 ```
-php artisan hpcat:update
+php artisan catalog:update hp,dell,lenovo
 ```
 
 Only driver packs:  
 ```
-php artisan hpcat:update --dpc
+php artisan catalog:update hp,dell,lenovo --dpc
 ```
 
 Only product catalog:
 ```
-php artisan hpcat:update --pc
+php artisan catalog:update hp,dell,lenovo --pc
 ```
 
-##### Code
+#### Code
 
 ```php
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpDriverPackCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
+
+use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellDriverPackCatalogController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController;
 
 HpDriverPackCatalogController::checkForCatalogUpdates();
 HpProductCatalogController::checkForCatalogUpdates();
+
+DellDriverPackCatalogController::checkForCatalogUpdates();
+DellCatalogPcController::checkForCatalogUpdates();
 ```
 
-#### Processing catalog
+### Processing catalog
 Catalog needs to be downloaded using above steps before processing.
 
-##### Console
+#### Console
 ```bash
-php artisan hpcat:process
+php artisan catalog:process hp,dell,lenovo
 ```
 
 Only driver packs:  
 ```
-php artisan hpcat:process --dpc
+php artisan catalog:process hp,dell,lenovo --dpc
 ```
 
 Only product catalog:
 ```
-php artisan hpcat:process --pc
+php artisan catalog:process hp,dell,lenovo --pc
 ```
 
-##### Code
+#### Code
 
 ```php
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpDriverPackCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
 
+use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellDriverPackCatalogController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController;
+
 (new HpDriverPackCatalogController)->processCatalog();
 (new HpProductCatalogController)->processCatalog();
+
+(new DellDriverPackCatalogController)->processCatalog();
+(new DellCatalogPcController)->processCatalog();
 ```
