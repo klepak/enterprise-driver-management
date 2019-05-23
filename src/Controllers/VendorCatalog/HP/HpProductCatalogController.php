@@ -9,7 +9,7 @@ use Klepak\DriverManagement\Models\HP\HpSoftpaq;
 use Klepak\DriverManagement\Models\HP\HpHardware;
 
 use Log;
-use ConsoleProgressBar;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource HpProductCatalog

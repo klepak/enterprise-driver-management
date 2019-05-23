@@ -4,7 +4,7 @@ namespace Klepak\DriverManagement\Controllers\VendorCatalog\HP;
 
 use Log;
 use Klepak\DriverManagement\Models\HP\HpDriverPack;
-use ConsoleProgressBar;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource HpDriverPack

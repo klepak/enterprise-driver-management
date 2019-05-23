@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
 
 use Log;
-use ConsoleProgressBar;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource VendorCatalog
