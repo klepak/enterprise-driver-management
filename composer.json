@@ -11,7 +11,7 @@
     "require": {
         "laravel/framework": "5.8.*",
         "guzzlehttp/guzzle": "~6.0",
-        "klepak/console-progress-bar": "dev-master"
+        "klepak/console-progress-bar": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^3.7",
