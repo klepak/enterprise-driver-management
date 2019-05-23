@@ -16,8 +16,8 @@ class CreateDellHardwareDevicesTable extends Migration
             $table->integer("component_id")->primary();
             $table->string("description");
             $table->integer("embedded");
-            $table->text("pci_info");
-            $table->text("pnp_info");
+            $table->text("pci_info")->nullable();
+            $table->text("pnp_info")->nullable();
         });
     }
 
