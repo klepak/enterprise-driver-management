@@ -19,6 +19,6 @@ class DellHardwareDevice extends Model
     ];
 
     public function softwareComponents() {
-        return \Klepak\DriverManagement\Models\Dell\DellSoftwareComponent::where("supported_devices", "like", "%{$this->component_id}%")->get();
+        return DellSoftwareComponent::where("supported_devices", "like", "%{$this->component_id}%")->get();
     }
 }

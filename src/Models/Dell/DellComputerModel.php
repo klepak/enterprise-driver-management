@@ -3,7 +3,8 @@
 namespace Klepak\DriverManagement\Models\Dell;
 
 use Klepak\DriverManagement\Models\VendorComputerModel;
-
+use Exception;
+use Log;
 class DellComputerModel extends VendorComputerModel
 {
     protected $guarded = [];
@@ -18,26 +19,27 @@ class DellComputerModel extends VendorComputerModel
         ];
     }
 
-    public function driverPacks($operatingSystem, $osBuild = null)
+    public function driverPack($operatingSystem, $osBuild = null)
     {
         $osCode = str_replace(" ", "", $operatingSystem);
 
         $driverPacks = DellDriverPack::where("supported_systems", "like", "%{$this->system_id}%")->where("supported_operating_systems", "like", "%$osCode%")->get();
+
+        if($driverPacks->count() > 1)
+            throw new Exception('Too many driver packages matched');
 
         return $driverPacks;
     }
 
     public function softwareDrivers($operatingSystem, $osBuild = null)
     {
-        $log = \Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController::log();
-
         if($operatingSystem == "Windows 10")
         {
             $osCode = "W10P4";
         }
         else
         {
-            $log->error("Os code for $operatingSystem not defined");
+            Log::error("Os code for $operatingSystem not defined");
             return false;
         }
 
@@ -50,14 +52,14 @@ class DellComputerModel extends VendorComputerModel
 
             if(!isset($latestSoftwareComponents[$packageBasename]))
             {
-                $log->info("Init $packageBasename");
+                Log::info("Init $packageBasename");
                 $latestSoftwareComponents[$packageBasename] = $softwareComponent;
             }
             else
             {
                 if($softwareComponent->dell_version > $latestSoftwareComponents[$packageBasename]->dell_version)
                 {
-                    $log->info("Newer $packageBasename: {$softwareComponent->dell_version}");
+                    Log::info("Newer $packageBasename: {$softwareComponent->dell_version}");
                     $latestSoftwareComponents[$packageBasename] = $softwareComponent;
                 }
             }

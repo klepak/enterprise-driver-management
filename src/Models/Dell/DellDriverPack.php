@@ -2,6 +2,8 @@
 
 namespace Klepak\DriverManagement\Models\Dell;
 
+use Log;
+
 class DellDriverPack extends DellBasePackage
 {
     protected $primaryKey = "release_id";
@@ -19,7 +21,7 @@ class DellDriverPack extends DellBasePackage
         if($downloadPath !== false)
         {
             $extractPath = storage_path("app\\extract\\{$this->release_id}");
-            $this->log()->info("Extracting driver pack {$this->release_id}");
+            Log::info("Extracting driver pack {$this->release_id}");
 
             if(zipExtract($downloadPath, $extractPath))
             {
