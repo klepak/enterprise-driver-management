@@ -4,6 +4,7 @@ namespace Klepak\DriverManagement\Controllers\VendorCatalog\Dell;
 
 use Log;
 use Klepak\DriverManagement\Models\Dell\DellDriverPack;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource DellDriverPackCatalog
@@ -32,10 +33,18 @@ class DellDriverPackCatalogController extends DellCatalogBaseController
     {
         $driverPackages = $this->getLocalCatalog()->xpath("//DriverPackage");
 
+        $progress = (new ConsoleProgressBar)
+            ->max(count($driverPackages))
+            ->message('Processing driver packages');
+
         Log::info("Processing " . count($driverPackages) . " driver packages");
 
+        $i = 0;
         foreach($driverPackages as $driverPackage)
         {
+            $progress
+                ->update(++$i);
+
             $attributes = ((array)$driverPackage->attributes())["@attributes"];
             $importantInfoAttributes = ((array)$driverPackage->ImportantInfo->attributes())["@attributes"];
 
@@ -65,6 +74,8 @@ class DellDriverPackCatalogController extends DellCatalogBaseController
                 ]
             );
         }
+
+        $progress->completed();
     }
 
     public function processCatalog()

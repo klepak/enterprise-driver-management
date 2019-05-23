@@ -8,6 +8,7 @@ use Storage;
 use Log;
 use Klepak\DriverManagement\Models\Dell\DellComputerModel;
 use Klepak\DriverManagement\Models\Dell\DellOperatingSystem;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource DellCatalog
@@ -90,30 +91,50 @@ class DellCatalogBaseController extends VendorCatalogBaseController
 
     public function processComputerModels()
     {
+        $progress = (new ConsoleProgressBar)
+            ->max(count($this->allComputerModels))
+            ->message('Processing computer models');
+
         Log::info("Processing " . count($this->allComputerModels) . " computer models");
         if(!empty($this->allComputerModels))
         {
+            $i = 0;
             foreach($this->allComputerModels as $systemId => $data)
             {
+                $progress
+                    ->update(++$i);
+
                 DellComputerModel::updateOrCreate([
                     "id" => (string)$systemId,
                     "system_id" => (string)$systemId,
                 ], $data);
             }
+
+            $progress->completed();
         }
     }
 
     public function processOperatingSystems()
     {
+        $progress = (new ConsoleProgressBar)
+            ->max(count($this->allOperatingSystems))
+            ->message('Processing operating systems');
+
         Log::info("Processing " . count($this->allOperatingSystems) . " operating systems");
         if(!empty($this->allOperatingSystems))
         {
+            $i = 0;
             foreach($this->allOperatingSystems as $osCode => $data)
             {
+                $progress
+                    ->update(++$i);
+
                 DellOperatingSystem::updateOrCreate([
                     "os_code" => $osCode
                 ], $data);
             }
+
+            $progress->completed();
         }
     }
 

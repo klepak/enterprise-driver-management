@@ -5,6 +5,7 @@ namespace Klepak\DriverManagement\Controllers\VendorCatalog\Dell;
 use Log;
 use Klepak\DriverManagement\Models\Dell\DellSoftwareComponent;
 use Klepak\DriverManagement\Models\Dell\DellHardwareDevice;
+use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**
  * @resource DellCatalogPc
@@ -20,10 +21,18 @@ class DellCatalogPcController extends DellCatalogBaseController
     {
         $softwareComponents = $this->getLocalCatalog()->xpath("//SoftwareComponent");
 
+        $progress = (new ConsoleProgressBar)
+            ->max(count($softwareComponents))
+            ->message('Processing software components');
+
         Log::info("Processing " . count($softwareComponents) . " software components");
 
+        $i = 0;
         foreach($softwareComponents as $softwareComponent)
         {
+            $progress
+                ->update(++$i);
+
             $attributes = ((array)$softwareComponent->attributes())["@attributes"];
             $criticalityAttributes = ((array)$softwareComponent->Criticality->attributes())["@attributes"];
             $importantInfoAttributes = ((array)$softwareComponent->ImportantInfo->attributes())["@attributes"];
@@ -64,6 +73,8 @@ class DellCatalogPcController extends DellCatalogBaseController
                 ]
             );
         }
+
+        $progress->completed();
     }
 
     public function parseSupportedDevices($supportedDevices)
@@ -124,15 +135,25 @@ class DellCatalogPcController extends DellCatalogBaseController
 
     public function processHardwareDevices()
     {
+        $progress = (new ConsoleProgressBar)
+            ->max(count($this->allHardwareDevices))
+            ->message('Processing hardware devices');
+
         Log::info("Processing " . count($this->allHardwareDevices) . " hardware devices");
         if(!empty($this->allHardwareDevices))
         {
+            $i = 0;
             foreach($this->allHardwareDevices as $componentId => $data)
             {
+                $progress
+                    ->update(++$i);
+
                 DellHardwareDevice::updateOrCreate([
                     "component_id" => $componentId
                 ], $data);
             }
+
+            $progress->completed();
         }
     }
 
