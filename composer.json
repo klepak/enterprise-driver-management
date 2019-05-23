@@ -10,7 +10,8 @@
     "minimum-stability": "dev",
     "require": {
         "laravel/framework": "5.8.*",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "klepak/console-progress-bar": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": "^3.7",
