@@ -28,7 +28,7 @@ class DellComputerModel extends VendorComputerModel
         if($driverPacks->count() > 1)
             throw new Exception('Too many driver packages matched');
 
-        return $driverPacks;
+        return $driverPacks->first();
     }
 
     public function softwareDrivers($operatingSystem, $osBuild = null)
