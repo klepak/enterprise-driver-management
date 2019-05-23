@@ -150,6 +150,10 @@ class HpComputerModel extends VendorComputerModel
             "Intel Rapid Storage Technology" => [
                 "",
                 " driver"
+            ],
+            'Intel Video Driver' => [
+                's and Control Panel',
+                ' and Control Panel'
             ]
         ];
 
