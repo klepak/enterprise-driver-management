@@ -5,9 +5,13 @@ namespace Klepak\DriverManagement\Models\Lenovo;
 use Klepak\DriverManagement\Models\VendorSoftwarePackage;
 use Exception;
 use Symfony\Component\Process\Process;
+use Klepak\PhpJsWebRequest\PhpJsWebRequest;
+use Str;
 
 class LenovoDriverPackage extends VendorSoftwarePackage
 {
+    public $osBuild = null;
+
     protected $casts = [
         "supported_models" => "array",
         "supported_operating_systems" => "array",
@@ -42,26 +46,29 @@ class LenovoDriverPackage extends VendorSoftwarePackage
 
     public function getDirectDownloadLink()
     {
-        $parent = parent::download();
+        $pageContent = (new PhpJsWebRequest)->get($this->getDownloadUrl());
 
-        if($parent !== false)
+        if(preg_match_all("/(http[s]?)(:\/\/)([^\s,]+.exe)(?=\")/", $pageContent, $matches))
         {
-            $pageContent = file_get_contents($parent);
+            $downloadLinks = collect($matches[0])->unique()->sort();
 
-            echo $pageContent;
-            return;
+            if($this->osBuild == null)
+                return $downloadLinks->last();
 
-            if(preg_match("/(http[s]?)(:\/\/)([^\s,]+.exe)(?=\")/", $pageContent, $matches))
-            {
-                $downloadUrl = $matches[0];
+            $downloadLinks = $downloadLinks->filter(function($item) {
+                return Str::is("*_{$this->osBuild}_*", $item);
+            });
 
-                return $downloadUrl;
-            }
-            else
-            {
-                throw new Exception("Unable to parse download link");
-            }
+            if($downloadLinks->count() > 1)
+                throw new Exception('More than one link matched');
+
+            return $downloadLinks->first();
         }
+        else
+        {
+            throw new Exception("Unable to parse download link");
+        }
+
 
         return false;
     }

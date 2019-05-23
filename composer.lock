@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc985e767752acf0ed0effd9d8c13306",
+    "content-hash": "c304741035e360d7e187bfc0e0632558",
     "packages": [
         {
             "name": "composer/xdebug-handler",
@@ -576,16 +576,16 @@
         },
         {
             "name": "klepak/console-progress-bar",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klepak/console-progress-bar.git",
-                "reference": "e2e45d381fedd6d2621fff613e2e71aba12674a5"
+                "reference": "e821da7042b0fbc420ceb753042e59a7b95b782b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klepak/console-progress-bar/zipball/e2e45d381fedd6d2621fff613e2e71aba12674a5",
-                "reference": "e2e45d381fedd6d2621fff613e2e71aba12674a5",
+                "url": "https://api.github.com/repos/klepak/console-progress-bar/zipball/e821da7042b0fbc420ceb753042e59a7b95b782b",
+                "reference": "e821da7042b0fbc420ceb753042e59a7b95b782b",
                 "shasum": ""
             },
             "type": "library",
@@ -601,8 +601,37 @@
                     "email": "knut@lepa.no"
                 }
             ],
-            "description": "Class to output a console progress bar with various options.",
-            "time": "2019-05-23T11:06:15+00:00"
+            "description": "Class to output a progress bar with various options.",
+            "time": "2019-05-23T11:05:17+00:00"
+        },
+        {
+            "name": "klepak/php-js-webrequest",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klepak/php-js-webrequest.git",
+                "reference": "39c429e35e4210c262da15619c33f29d16c3894a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klepak/php-js-webrequest/zipball/39c429e35e4210c262da15619c33f29d16c3894a",
+                "reference": "39c429e35e4210c262da15619c33f29d16c3894a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Klepak\\PhpJsWebRequest\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Knut Leborg",
+                    "email": "knut@lepa.no"
+                }
+            ],
+            "time": "2019-05-23T15:22:27+00:00"
         },
         {
             "name": "laravel/framework",
@@ -610,12 +639,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f63b55a574dd61a2ec60723a74664938a5fb7799"
+                "reference": "3872284a139035c3edeb2391fde104c9efd9098e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f63b55a574dd61a2ec60723a74664938a5fb7799",
-                "reference": "f63b55a574dd61a2ec60723a74664938a5fb7799",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3872284a139035c3edeb2391fde104c9efd9098e",
+                "reference": "3872284a139035c3edeb2391fde104c9efd9098e",
                 "shasum": ""
             },
             "require": {
@@ -749,7 +778,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-05-21T18:32:32+00:00"
+            "time": "2019-05-23T14:50:58+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1806,12 +1835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ea81b8363672238f25f0ebbcb5c9b27e177113f9"
+                "reference": "0553ea51ced159b28bc9c3321f25b9df2cb55bc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ea81b8363672238f25f0ebbcb5c9b27e177113f9",
-                "reference": "ea81b8363672238f25f0ebbcb5c9b27e177113f9",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0553ea51ced159b28bc9c3321f25b9df2cb55bc7",
+                "reference": "0553ea51ced159b28bc9c3321f25b9df2cb55bc7",
                 "shasum": ""
             },
             "require": {
@@ -1872,7 +1901,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-05-21T20:56:59+00:00"
+            "time": "2019-05-23T15:14:39+00:00"
         },
         {
             "name": "psr/container",
@@ -5256,7 +5285,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "klepak/console-progress-bar": 20
+        "klepak/php-js-webrequest": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

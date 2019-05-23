@@ -30,7 +30,7 @@ class LenovoComputerModel extends VendorComputerModel
         }
     }
 
-    public function driverPack($operatingSystem, $osBuild = false)
+    public function driverPack($operatingSystem, $osBuild = null)
     {
         $osCode = static::getOsCode($operatingSystem);
 
@@ -43,7 +43,10 @@ class LenovoComputerModel extends VendorComputerModel
         if($allDriverPacks->count() > 1)
             throw new Exception('More than 1 driver pack matched');
 
-        return $allDriverPacks->first();
+        $driverPack = $allDriverPacks->first();
+        $driverPack->osBuild = $osBuild;
+
+        return $driverPack;
     }
 
     public function softwareDrivers($operatingSystem, $osBuild = false)
