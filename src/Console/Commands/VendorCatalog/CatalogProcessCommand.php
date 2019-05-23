@@ -7,6 +7,7 @@ use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpDriverPackCatalogCont
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellDriverPackCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\Lenovo\LenovoCatalogController;
 
 class CatalogProcessCommand extends Command
 {
@@ -73,6 +74,12 @@ class CatalogProcessCommand extends Command
                 $catalog = new DellCatalogPcController;
                 $catalog->processCatalog();
             }
+        }
+
+        if(in_array('lenovo', $vendors))
+        {
+            $catalog = new LenovoCatalogController;
+            $catalog->processCatalog();
         }
     }
 }

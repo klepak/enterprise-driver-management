@@ -7,6 +7,7 @@ use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpDriverPackCatalogCont
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellDriverPackCatalogController;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController;
+use Klepak\DriverManagement\Controllers\VendorCatalog\Lenovo\LenovoCatalogController;
 
 class CatalogUpdateCommand extends Command
 {
@@ -69,6 +70,11 @@ class CatalogUpdateCommand extends Command
             {
                 DellCatalogPcController::checkForCatalogUpdates();
             }
+        }
+
+        if(in_array('lenovo', $vendors))
+        {
+            LenovoCatalogController::checkForCatalogUpdates();
         }
     }
 }
