@@ -13,17 +13,15 @@ class CreateLenovoComputerModelsTable extends Migration
     public function up()
     {
         Schema::create('lenovo_computer_models', function (Blueprint $table) {
-            $table->string("id")->primary();
-            $table->string("system_id");
-            $table->string("product_family");
-            #$table->string("operating_system");
-            $table->text("types");
-            $table->string("name");
-            $table->string("smbios");
-            #$table->text("driver_packs");
-            #$table->string("bios_update");
-            #$table->text("hardware_apps");
-            $table->text("supported_operating_systems");
+            $table->bigIncrements('id');
+
+            $table->string('model_id');
+            $table->string('system_id');
+            $table->string('product_family');
+            $table->text('types');
+            $table->string('name');
+            $table->string('smbios');
+            $table->text('supported_operating_systems');
         });
     }
 

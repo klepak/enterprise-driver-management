@@ -13,7 +13,9 @@ class CreateHpComputerModelsTable extends Migration
     public function up()
     {
         Schema::create('hp_computer_models', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->bigIncrements('id');
+
+            $table->integer('model_id');
             $table->string('name');
             $table->string('short_name');
             $table->string('system_id');

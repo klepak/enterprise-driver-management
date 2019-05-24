@@ -79,11 +79,11 @@ class HpProductCatalogController extends HpCatalogBaseController
         {
             $attributes = ((array)$productModel->attributes())["@attributes"];
 
-            $id = $attributes["Id"];
+            $modelId = $attributes["Id"];
             $name = (string)$productModel->Name;
 
             HpComputerModel::updateOrCreate(
-                ["id" => $id],
+                ["model_id" => $modelId],
                 [
                     "name" => $name,
                     "short_name" => (string)$productModel->ShortName,

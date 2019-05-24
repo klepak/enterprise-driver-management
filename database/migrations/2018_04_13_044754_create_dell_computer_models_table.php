@@ -13,9 +13,11 @@ class CreateDellComputerModelsTable extends Migration
     public function up()
     {
         Schema::create('dell_computer_models', function (Blueprint $table) {
-            $table->string("id")->primary();
-            $table->string("system_id");
-            $table->string("name");
+            $table->bigIncrements('id');
+
+            $table->string('model_id');
+            $table->string('system_id');
+            $table->string('name');
         });
     }
 

@@ -105,8 +105,8 @@ class DellCatalogBaseController extends VendorCatalogBaseController
                     ->update(++$i);
 
                 DellComputerModel::updateOrCreate([
-                    "id" => (string)$systemId,
-                    "system_id" => (string)$systemId,
+                    'model_id' => (string)$systemId,
+                    'system_id' => (string)$systemId,
                 ], $data);
             }
 

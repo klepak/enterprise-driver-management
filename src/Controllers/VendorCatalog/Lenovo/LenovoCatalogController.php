@@ -47,8 +47,8 @@ class LenovoCatalogController extends VendorCatalogBaseController
         {
             LenovoComputerModel::updateOrCreate(
                 [
-                    "id" => (string)$systemId, // sql query bugs out if not explicitly cast to string
-                    "system_id" => (string)$systemId, // sql query bugs out if not explicitly cast to string
+                    'model_id' => (string)$systemId, // sql query bugs out if not explicitly cast to string
+                    'system_id' => (string)$systemId, // sql query bugs out if not explicitly cast to string
                 ], $data
             );
         }
