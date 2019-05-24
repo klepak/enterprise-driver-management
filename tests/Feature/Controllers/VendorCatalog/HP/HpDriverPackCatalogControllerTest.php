@@ -3,7 +3,7 @@
 namespace Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\HP;
 
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpDriverPackCatalogController;
-use Klepak\DriverManagement\Models\HP\HpDriverPack;
+use Klepak\DriverManagement\Models\Vendor\HP\HpDriverPack;
 use Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\VendorCatalogBaseControllerTest;
 
 class HpDriverPackCatalogControllerTest extends VendorCatalogBaseControllerTest

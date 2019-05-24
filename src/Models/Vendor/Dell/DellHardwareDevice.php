@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\Dell;
+namespace Klepak\DriverManagement\Models\Vendor\Dell;
 
 use Illuminate\Database\Eloquent\Model;
 

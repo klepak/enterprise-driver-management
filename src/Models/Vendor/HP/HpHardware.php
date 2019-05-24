@@ -1,14 +1,15 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\Dell;
+namespace Klepak\DriverManagement\Models\Vendor\HP;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DellOperatingSystem extends Model
+class HpHardware extends Model
 {
     protected $guarded = [];
+
     public $timestamps = false;
 
-    protected $primaryKey = "os_code";
+    protected $primaryKey = null;
     public $incrementing = false;
 }

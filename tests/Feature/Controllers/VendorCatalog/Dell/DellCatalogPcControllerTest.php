@@ -5,10 +5,10 @@ namespace Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\HP;
 
 use Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\VendorCatalogBaseControllerTest;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Dell\DellCatalogPcController;
-use Klepak\DriverManagement\Models\Dell\DellSoftwareComponent;
-use Klepak\DriverManagement\Models\Dell\DellComputerModel;
-use Klepak\DriverManagement\Models\Dell\DellHardwareDevice;
-use Klepak\DriverManagement\Models\Dell\DellOperatingSystem;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellSoftwareComponent;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellHardwareDevice;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellOperatingSystem;
 
 class DellCatalogPcControllerTest extends VendorCatalogBaseControllerTest
 {

@@ -4,8 +4,8 @@ namespace Klepak\DriverManagement\Controllers\VendorCatalog\Lenovo;
 
 use Klepak\DriverManagement\Controllers\VendorCatalog\VendorCatalogBaseController;
 use Log;
-use Klepak\DriverManagement\Models\Lenovo\LenovoDriverPackage;
-use Klepak\DriverManagement\Models\Lenovo\LenovoComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Lenovo\LenovoDriverPackage;
+use Klepak\DriverManagement\Models\Vendor\Lenovo\LenovoComputerModel;
 
 /**
  * @resource LenovoCatalog

@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\Dell;
+namespace Klepak\DriverManagement\Models\Vendor\Dell;
 
 use Klepak\DriverManagement\Models\VendorComputerModel;
 use Exception;

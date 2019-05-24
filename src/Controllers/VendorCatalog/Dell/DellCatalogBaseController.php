@@ -6,8 +6,8 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Klepak\DriverManagement\Controllers\VendorCatalog\VendorCatalogBaseController;
 use Storage;
 use Log;
-use Klepak\DriverManagement\Models\Dell\DellComputerModel;
-use Klepak\DriverManagement\Models\Dell\DellOperatingSystem;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellOperatingSystem;
 use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**

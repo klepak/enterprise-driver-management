@@ -3,10 +3,10 @@
 namespace Klepak\DriverManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Klepak\DriverManagement\Models\HP\HpComputerModel;
+use Klepak\DriverManagement\Models\Vendor\HP\HpComputerModel;
 use Exception;
-use Klepak\DriverManagement\Models\Dell\DellComputerModel;
-use Klepak\DriverManagement\Models\Lenovo\LenovoComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Lenovo\LenovoComputerModel;
 
 abstract class VendorComputerModel extends Model
 {

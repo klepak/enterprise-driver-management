@@ -3,8 +3,8 @@
 namespace Klepak\DriverManagement\Controllers\VendorCatalog\Dell;
 
 use Log;
-use Klepak\DriverManagement\Models\Dell\DellSoftwareComponent;
-use Klepak\DriverManagement\Models\Dell\DellHardwareDevice;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellSoftwareComponent;
+use Klepak\DriverManagement\Models\Vendor\Dell\DellHardwareDevice;
 use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**

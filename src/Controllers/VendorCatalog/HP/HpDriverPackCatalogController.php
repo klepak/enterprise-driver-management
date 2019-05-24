@@ -3,7 +3,7 @@
 namespace Klepak\DriverManagement\Controllers\VendorCatalog\HP;
 
 use Log;
-use Klepak\DriverManagement\Models\HP\HpDriverPack;
+use Klepak\DriverManagement\Models\Vendor\HP\HpDriverPack;
 use Klepak\ConsoleProgressBar\ConsoleProgressBar;
 
 /**

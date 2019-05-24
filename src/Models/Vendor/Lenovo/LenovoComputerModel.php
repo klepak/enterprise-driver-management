@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\Lenovo;
+namespace Klepak\DriverManagement\Models\Vendor\Lenovo;
 
 use Klepak\DriverManagement\Models\VendorComputerModel;
 use Exception;

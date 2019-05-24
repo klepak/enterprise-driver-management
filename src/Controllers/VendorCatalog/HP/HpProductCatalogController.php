@@ -2,11 +2,11 @@
 
 namespace Klepak\DriverManagement\Controllers\VendorCatalog\HP;
 
-use Klepak\DriverManagement\Models\HP\HpComputerModel;
-use Klepak\DriverManagement\Models\HP\HpOperatingSystem;
-use Klepak\DriverManagement\Models\HP\HpLanguage;
-use Klepak\DriverManagement\Models\HP\HpSoftpaq;
-use Klepak\DriverManagement\Models\HP\HpHardware;
+use Klepak\DriverManagement\Models\Vendor\HP\HpComputerModel;
+use Klepak\DriverManagement\Models\Vendor\HP\HpOperatingSystem;
+use Klepak\DriverManagement\Models\Vendor\HP\HpLanguage;
+use Klepak\DriverManagement\Models\Vendor\HP\HpSoftpaq;
+use Klepak\DriverManagement\Models\Vendor\HP\HpHardware;
 
 use Log;
 use Klepak\ConsoleProgressBar\ConsoleProgressBar;

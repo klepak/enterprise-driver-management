@@ -1,10 +1,10 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\HP;
+namespace Klepak\DriverManagement\Models\Vendor\HP;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HpLanguage extends Model
+class HpOperatingSystem extends Model
 {
     protected $guarded = [];
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\DriverManagement\Models\HP;
+namespace Klepak\DriverManagement\Models\Vendor\HP;
 
 use Illuminate\Database\Eloquent\Model;
 

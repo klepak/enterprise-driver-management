@@ -4,8 +4,8 @@ namespace Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\HP;
 
 use Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\VendorCatalogBaseControllerTest;
 use Klepak\DriverManagement\Controllers\VendorCatalog\Lenovo\LenovoCatalogController;
-use Klepak\DriverManagement\Models\Lenovo\LenovoDriverPackage;
-use Klepak\DriverManagement\Models\Lenovo\LenovoComputerModel;
+use Klepak\DriverManagement\Models\Vendor\Lenovo\LenovoDriverPackage;
+use Klepak\DriverManagement\Models\Vendor\Lenovo\LenovoComputerModel;
 
 class LenovoDriverPackCatalogControllerTest extends VendorCatalogBaseControllerTest
 {

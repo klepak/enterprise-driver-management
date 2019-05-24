@@ -4,11 +4,11 @@ namespace Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\HP;
 
 use Klepak\DriverManagement\Tests\Feature\Controllers\VendorCatalog\VendorCatalogBaseControllerTest;
 use Klepak\DriverManagement\Controllers\VendorCatalog\HP\HpProductCatalogController;
-use Klepak\DriverManagement\Models\HP\HpHardware;
-use Klepak\DriverManagement\Models\HP\HpSoftpaq;
-use Klepak\DriverManagement\Models\HP\HpLanguage;
-use Klepak\DriverManagement\Models\HP\HpOperatingSystem;
-use Klepak\DriverManagement\Models\HP\HpComputerModel;
+use Klepak\DriverManagement\Models\Vendor\HP\HpHardware;
+use Klepak\DriverManagement\Models\Vendor\HP\HpSoftpaq;
+use Klepak\DriverManagement\Models\Vendor\HP\HpLanguage;
+use Klepak\DriverManagement\Models\Vendor\HP\HpOperatingSystem;
+use Klepak\DriverManagement\Models\Vendor\HP\HpComputerModel;
 
 class HpProductCatalogControllerTest extends VendorCatalogBaseControllerTest
 {
