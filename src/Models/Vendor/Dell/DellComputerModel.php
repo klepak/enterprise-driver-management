@@ -5,6 +5,8 @@ namespace Klepak\DriverManagement\Models\Vendor\Dell;
 use Klepak\DriverManagement\Models\VendorComputerModel;
 use Exception;
 use Log;
+use Klepak\DriverManagement\Models\DriverSet\ComputerModel;
+
 class DellComputerModel extends VendorComputerModel
 {
     protected $guarded = [];
@@ -72,5 +74,10 @@ class DellComputerModel extends VendorComputerModel
         }
 
         return collect($softwareComponentCollection);
+    }
+
+    public function computerModels()
+    {
+        return $this->morphMany(ComputerModel::class, 'vendorModels');
     }
 }
