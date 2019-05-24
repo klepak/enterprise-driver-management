@@ -5,8 +5,10 @@ namespace Klepak\DriverManagement\Models;
 use Illuminate\Database\Eloquent\Model;
 use Klepak\DriverManagement\Models\HP\HpComputerModel;
 use Exception;
+use Klepak\DriverManagement\Models\Dell\DellComputerModel;
+use Klepak\DriverManagement\Models\Lenovo\LenovoComputerModel;
 
-class VendorComputerModel extends Model
+abstract class VendorComputerModel extends Model
 {
     const HP = "HP";
     const DELL = "Dell";
@@ -42,13 +44,13 @@ class VendorComputerModel extends Model
             case static::HP:
                 $model = new HpComputerModel;
                 break;
-            /* case static::DELL:
+            case static::DELL:
                 $model = new DellComputerModel;
                 break;
             case static::LENOVO:
                 $model = new LenovoComputerModel;
                 break;
- */
+
             default:
                 throw new Exception("Vendor identifier $vendorIdentifier unknown - supported vendors: " . implode(",", static::getSupportedVendors()));
         }
