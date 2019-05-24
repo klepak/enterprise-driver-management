@@ -69,7 +69,6 @@ class LenovoDriverPackage extends VendorSoftwarePackage
             throw new Exception("Unable to parse download link");
         }
 
-
         return false;
     }
 
