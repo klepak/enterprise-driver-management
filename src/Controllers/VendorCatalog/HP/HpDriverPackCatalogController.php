@@ -45,17 +45,20 @@ class HpDriverPackCatalogController extends HpCatalogBaseController
             $progress
                 ->update(++$i);
 
-            HpDriverPack::updateOrCreate(
-                [
-                    "product_type" => (string)$driverPack->ProductType,
-                    "system_id" => explode(',', (string)$driverPack->SystemId),
-                    "system_name" => (string)$driverPack->SystemName,
-                    "os_name" => (string)$driverPack->OSName,
-                ],
-                [
-                    "softpaq_id" => (string)$driverPack->SoftPaqId,
-                ]
-            );
+            foreach(explode(',', $driverPack->SystemId) as $systemId)
+            {
+                HpDriverPack::updateOrCreate(
+                    [
+                        'product_type' => (string)$driverPack->ProductType,
+                        'system_id' => $systemId,
+                        'system_name' => (string)$driverPack->SystemName,
+                        'os_name' => (string)$driverPack->OSName,
+                    ],
+                    [
+                        'softpaq_id' => (string)$driverPack->SoftPaqId,
+                    ]
+                );
+            }
         }
 
         $progress->completed();

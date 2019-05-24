@@ -10,10 +10,6 @@ class HpDriverPack extends Model
 
     public $timestamps = false;
 
-    protected $primaryKey = "id";
+    protected $primaryKey = 'id';
     public $incrementing = false;
-
-    protected $casts = [
-        "system_id" => "array",
-    ];
 }

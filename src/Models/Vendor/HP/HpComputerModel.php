@@ -47,7 +47,7 @@ class HpComputerModel extends VendorComputerModel
         $allDriverPacks = HpDriverPack::where(function($sub) {
             foreach($this->system_id as $systemId)
             {
-                $sub->orWhere("system_id", 'like', "%\"{$systemId}\"%");
+                $sub->orWhere('system_id', $systemId);
             }
         })
             ->where("os_name", "like", $osNameStr)
