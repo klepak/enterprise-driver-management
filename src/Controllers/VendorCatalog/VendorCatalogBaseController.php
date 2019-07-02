@@ -114,7 +114,7 @@ class VendorCatalogBaseController
 
         if(!file_exists($localCatalogXmlPath))
         {
-            throw new Exception('No local catalog found');
+            return false;
         }
         else
         {
